@@ -311,8 +311,8 @@
 
             <!-- Virtual Lookahead Sink -->
             <h3 class="subsection-title">Virtual Lookahead Sink</h3>
-            <div style="display: flex; gap: 2rem; align-items: center;">
-                <div style="flex: 1;">
+            <div class="text-figure-row">
+                <div class="text-figure-text">
                     <p>
                         Autoregressive generation accumulates errors over long horizons. Prior methods (a) use a static
                         attention sink anchored to the initial frame, whose guidance weakens as the camera moves farther away.
@@ -323,7 +323,7 @@
                         The comparison below shows that VL Sink effectively prevents quality degradation in long-horizon generation.
                     </p>
                 </div>
-                <div style="flex: 0 0 45%;">
+                <div class="text-figure-img">
                     <div class="figure-container">
                         <img src="assets/sink.png" alt="Virtual Lookahead Sink mechanism">
                     </div>

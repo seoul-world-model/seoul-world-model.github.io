@@ -533,6 +533,32 @@ p {
     }
 }
 
+/* Text + Figure Row (desktop: text left / image right, mobile: image on top) */
+.text-figure-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.text-figure-text {
+    flex: 1;
+}
+
+.text-figure-img {
+    flex: 0 0 45%;
+}
+
+@media (max-width: 768px) {
+    .text-figure-row {
+        flex-direction: column-reverse;
+    }
+
+    .text-figure-img {
+        flex: none;
+        width: 100%;
+    }
+}
+
 /* Abstract Section */
 .abstract-text {
     font-size: 1.25rem;
