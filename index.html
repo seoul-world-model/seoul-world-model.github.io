@@ -159,8 +159,7 @@
                 without accumulating errors, maintaining robust performance across long-horizon generation.
             </p>
             <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-teaser-2.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-2.mp4">
                 </video>
                 <span class="speed-label">20x speed</span>
                 <span class="video-caption">AI-Generated Video by SWM</span>
@@ -178,8 +177,7 @@
                 letting users explore the city through arbitrary camera trajectories.
             </p>
             <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-teaser-3.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-3.mp4">
                 </video>
                 <span class="video-caption">AI-Generated Video by SWM</span>
             </div>
@@ -196,8 +194,7 @@
                 drop Godzilla between skyscrapers, or imagine any scenario you like.
             </p>
             <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-teaser-4.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-4.mp4">
                 </video>
                 <span class="video-caption">AI-Generated Video by SWM</span>
             </div>
@@ -215,8 +212,7 @@
                 location.
             </p>
             <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-teaser-5-ver2.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-5-ver2.mp4">
                 </video>
                 <span class="video-caption">AI-Generated Video by SWM</span>
             </div>
@@ -266,8 +262,7 @@
                 Temporal separation forces the model to focus on persistent scene structure.
             </p>
             <div class="video-container" style="max-width: 85%; margin: 0 auto;">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-pairing.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-pairing.mp4">
                 </video>
             </div>
 
@@ -285,8 +280,7 @@
                 as shown in the comparison below.
             </p>
             <div class="video-container" style="max-width: 85%; margin: 0 auto;">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-synthetic.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-synthetic.mp4">
                 </video>
             </div>
         </div>
@@ -336,8 +330,7 @@
                 </div>
             </div>
             <div class="video-container" style="max-width: 85%; margin: 0 auto;">
-                <video autoplay loop muted playsinline>
-                    <source src="video/page-vlsink.mp4" type="video/mp4">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-vlsink.mp4">
                 </video>
             </div>
         </div>
@@ -475,10 +468,38 @@
             });
         }
 
+        // Lazy Loading Videos
+        function initLazyVideos() {
+            const videos = document.querySelectorAll('video.lazy-video');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        const src = video.dataset.src;
+                        if (src) {
+                            const source = document.createElement('source');
+                            source.src = src;
+                            source.type = 'video/mp4';
+                            video.appendChild(source);
+                            video.load();
+                            video.play();
+                            delete video.dataset.src;
+                        }
+                        observer.unobserve(video);
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px'
+            });
+
+            videos.forEach(video => observer.observe(video));
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initScrollSpy();
             initFadeInAnimations();
+            initLazyVideos();
         });
     </script>
 </body>
