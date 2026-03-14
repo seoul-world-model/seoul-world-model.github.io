@@ -468,6 +468,15 @@ p {
     border-radius: 0.5rem;
 }
 
+.figure-caption {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-top: 0.5rem;
+}
+
 .video-caption {
     display: block;
     text-align: center;
@@ -485,6 +494,43 @@ p {
     background: rgba(0, 0, 0, 0.5);
     padding: 2px 8px;
     border-radius: 4px;
+}
+
+/* Figure Container */
+.figure-container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.figure-container img {
+    width: 100%;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+/* Subsection Title */
+.subsection-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-main);
+}
+
+/* Two-Column Layout */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .two-col {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Abstract Section */

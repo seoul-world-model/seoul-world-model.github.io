@@ -54,6 +54,14 @@
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">RAG Visualization</span>
         </a>
+        <a href="#data-overview" class="sidebar-item">
+            <div class="sidebar-dot"></div>
+            <span class="sidebar-label">Data</span>
+        </a>
+        <a href="#model-overview" class="sidebar-item">
+            <div class="sidebar-dot"></div>
+            <span class="sidebar-label">Model</span>
+        </a>
         <a href="#abstract" class="sidebar-item">
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">Abstract</span>
@@ -215,6 +223,126 @@
         </div>
     </section>
 
+    <!-- Data Overview -->
+    <section id="data-overview" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Data Overview</h2>
+            <p>
+                SWM is trained on aligned pairs of street-view references and target video sequences from two sources:
+                <strong>1.2M real panoramic images</strong> captured across Seoul, and <strong>10K synthetic videos</strong>
+                from a CARLA-based urban simulator spanning 431,500m&sup2; of city area.
+            </p>
+            <div class="figure-container">
+                <img src="assets/data.png" alt="Data overview: real street-view and synthetic datasets" style="max-width: 90%;">
+            </div>
+
+            <!-- Cross-Temporal Pairing + View Interpolation -->
+            <h3 class="subsection-title">Cross-Temporal Pairing &amp; Street-View Interpolation</h3>
+            <p>
+                <strong>Cross-temporal pairing</strong> requires that reference street-view images be captured at a
+                different time from the target, forcing the model to rely on persistent spatial structure
+                and ignore transient objects like vehicles. As shown below (left), the trained model attends to
+                scene geometry rather than dynamic content in the references.
+                <strong>View interpolation</strong> (right) synthesizes smooth training videos from sparse street-view
+                keyframes (5&ndash;20m apart) using an Intermittent Freeze-Frame strategy matched to the 3D VAE's
+                temporal stride.
+            </p>
+            <div class="two-col" style="gap: 1.5rem; align-items: center;">
+                <div class="two-col-item">
+                    <div class="figure-container">
+                        <img src="assets/vis_attn.png" alt="Cross-temporal pairing attention visualization">
+                        <span class="figure-caption">Attention Visualization under Cross-Temporal Pairing</span>
+                    </div>
+                </div>
+                <div class="two-col-item">
+                    <div class="figure-container">
+                        <img src="assets/interp_only.png" alt="View interpolation pipeline">
+                        <span class="figure-caption">Street-View Interpolation Model</span>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Without cross-temporal pairing, dynamic objects in the reference (e.g., vehicles) leak into the generated video.
+                Temporal separation forces the model to focus on persistent scene structure.
+            </p>
+            <div class="video-container" style="max-width: 85%; margin: 0 auto;">
+                <video autoplay loop muted playsinline>
+                    <source src="video/page-pairing.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Synthetic Data -->
+            <h3 class="subsection-title">CARLA-based Synthetic Data</h3>
+            <p>
+                To complement driving-only real trajectories, we render synthetic data from CARLA with three
+                trajectory types: <strong>pedestrian</strong> (sidewalks, crossings),
+                <strong>vehicle</strong> (highways, urban roads), and <strong>free-camera</strong>
+                (arbitrary collision-free paths). This diversity enables SWM to handle arbitrary camera
+                movements at inference.
+            </p>
+            <p>
+                Synthetic data with diverse camera paths allows SWM to generalize beyond forward-driving trajectories,
+                as shown in the comparison below.
+            </p>
+            <div class="video-container" style="max-width: 85%; margin: 0 auto;">
+                <video autoplay loop muted playsinline>
+                    <source src="video/page-synthetic.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Overview -->
+    <section id="model-overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Model Overview</h2>
+            <p>
+                SWM autoregressively generates video chunks conditioned on a text prompt, camera trajectory,
+                and street-view images retrieved from a geo-indexed street-view database.
+            </p>
+            <div class="figure-container">
+                <img src="assets/model.png" alt="SWM model architecture overview" style="max-width: 85%; margin: 0 auto;">
+            </div>
+
+            <!-- Retrieval and Referencing -->
+            <h3 class="subsection-title">Retrieval &amp; Referencing</h3>
+            <p>
+                For each generation chunk, nearby street-view images are retrieved via nearest-neighbor search
+                and depth-based reprojection filtering. These references condition generation through two
+                complementary pathways: <strong>geometric referencing</strong> warps the nearest reference into the
+                target viewpoint via depth-based splatting to provide spatial layout cues, while
+                <strong>semantic referencing</strong> injects original reference images into the transformer's
+                latent sequence so the model can attend to appearance details across all references.
+            </p>
+
+            <!-- Virtual Lookahead Sink -->
+            <h3 class="subsection-title">Virtual Lookahead Sink</h3>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <div style="flex: 1;">
+                    <p>
+                        Autoregressive generation accumulates errors over long horizons. Prior methods (a) use a static
+                        attention sink anchored to the initial frame, whose guidance weakens as the camera moves farther away.
+                        Our <strong>Virtual Lookahead (VL) Sink</strong> (b) dynamically retrieves the nearest
+                        street-view image as a virtual future destination, providing a clean, error-free anchor ahead of the
+                        current chunk. This continuously re-grounds generation, stabilizing video quality
+                        over trajectories spanning hundreds of meters.
+                        The comparison below shows that VL Sink effectively prevents quality degradation in long-horizon generation.
+                    </p>
+                </div>
+                <div style="flex: 0 0 45%;">
+                    <div class="figure-container">
+                        <img src="assets/sink.png" alt="Virtual Lookahead Sink mechanism">
+                    </div>
+                </div>
+            </div>
+            <div class="video-container" style="max-width: 85%; margin: 0 auto;">
+                <video autoplay loop muted playsinline>
+                    <source src="video/page-vlsink.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
     <!-- Abstract -->
     <section id="abstract" class="section alt-bg">
         <div class="container">
@@ -249,7 +377,7 @@
                 <button onclick="copyBibtex()" class="citation-copy-btn">
                     <i class="fa-regular fa-copy"></i> Copy
                 </button>
-                <div id="bibtex-text">[TBD]</div>
+                <div id="bibtex-text" style="display: none;">[TBD]</div>
                 <pre class="citation-code"><code id="bibtex-code">[TBD]</code></pre>
             </div>
         </div>
