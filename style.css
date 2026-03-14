@@ -468,6 +468,14 @@ p {
     border-radius: 0.5rem;
 }
 
+.video-caption {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.05rem;
+}
+
 .speed-label {
     position: absolute;
     bottom: 12px;
