@@ -138,7 +138,7 @@
         <!-- Hero Teaser Video -->
         <div class="teaser-container">
             <div class="video-container" style="max-width: 72rem; margin: 0 auto 2rem auto;">
-                <video autoplay loop muted playsinline>
+                <video class="hero-video" autoplay loop muted playsinline>
                     <source src="video/page-teaser-1.mp4" type="video/mp4">
                 </video>
                 <span class="video-caption">AI-Generated Video by SWM</span>
@@ -534,6 +534,14 @@
             initScrollSpy();
             initFadeInAnimations();
             initLazyVideos();
+
+            const heroVideo = document.querySelector('video.hero-video');
+            if (heroVideo) {
+                heroVideo.addEventListener('playing', function onPlaying() {
+                    heroVideo.classList.add('loaded');
+                    heroVideo.removeEventListener('playing', onPlaying);
+                });
+            }
         });
     </script>
 </body>
