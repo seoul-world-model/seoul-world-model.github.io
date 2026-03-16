@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울 월드 모델: 실제 도시 기반의 월드 시뮬레이션 모델</title>
     <meta name="description"
-        content="Seoul World Model (SWM): 서울이라는 실제 도시에 기반한 도시 규모의 월드 모델.">
+        content="Seoul World Model: 서울 월드 모델">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -52,6 +52,10 @@
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">TL;DR</span>
         </a>
+        <a href="#demo-text" class="sidebar-item">
+            <div class="sidebar-dot"></div>
+            <span class="sidebar-label">텍스트 제어</span>
+        </a>
         <a href="#demo-trajectory" class="sidebar-item">
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">장거리 생성</span>
@@ -59,10 +63,6 @@
         <a href="#demo-navigation" class="sidebar-item">
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">자유 탐색</span>
-        </a>
-        <a href="#demo-text" class="sidebar-item">
-            <div class="sidebar-dot"></div>
-            <span class="sidebar-label">텍스트 제어</span>
         </a>
         <a href="#demo-rag" class="sidebar-item">
             <div class="sidebar-dot"></div>
@@ -102,7 +102,7 @@
                 <span><a href="https://j0seo.github.io/" target="_blank" rel="noopener noreferrer">서준영</a><sup>*1</sup></span>
                 <span>최현욱<sup>*1</sup></span>
                 <span><a href="https://mkxdxdxd.github.io/" target="_blank" rel="noopener noreferrer">권민경</a><sup>1</sup></span>
-                <span>최진혁<sup>1</sup></span>
+                <span><a href="https://wlsguur.github.io/" target="_blank" rel="noopener noreferrer">최진혁</a><sup>1</sup></span>
                 <span><a href="https://jinsy515.github.io/my-page/" target="_blank" rel="noopener noreferrer">진시윤</a><sup>1</sup></span>
                 <span><a href="https://sites.google.com/site/gylee1103" target="_blank" rel="noopener noreferrer">이가영</a><sup>2</sup></span>
                 <span><a href="https://github.com/taki0112" target="_blank" rel="noopener noreferrer">김준호</a><sup>2</sup></span>
@@ -161,9 +161,27 @@
                         월드 모델이 상상 속 공간이 아닌, 우리의 실제 도시를 모델링할 수 있다면 어떨까요?<br>
                         <span class="tldr-highlight">Seoul World Model (SWM)</span>은
                         <span class="tldr-highlight">실제 도시를 자유롭게 탐색할 수 있는 최초의 비디오 월드 모델</span>입니다.<br>
-                        수백만 장의 거리뷰 이미지에 대한 RAG를 통해, 수 킬로미터에 걸친 실제 도시 영상을 생성합니다.
+                        서울 전역 수백만 장의 거리뷰 이미지를 바탕으로, 실제 도시에 기반한 영상을 수 킬로미터에 걸쳐 그려냅니다.
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo: Text Control -->
+    <section id="demo-text" class="section">
+        <div class="container">
+            <h2 class="section-title">텍스트 기반 시나리오 제어</h2>
+            <p>
+                SWM은 텍스트 프롬프트를 통해 서울의 실제 거리를 자유롭게 돌아다니며,
+                그 위에 원하는 시나리오를 입힐 수 있습니다.
+                거리를 덮치는 거대한 파도, 빌딩 사이에 나타난 고질라 등
+                어떤 상황이든 상상하는 대로 만들어 보세요.
+            </p>
+            <div class="video-container">
+                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-4.mp4">
+                </video>
+                <span class="video-caption">SWM이 생성한 AI 영상</span>
             </div>
         </div>
     </section>
@@ -171,7 +189,7 @@
     <!-- Demo: Multi-Kilometer Trajectory -->
     <section id="demo-trajectory" class="section">
         <div class="container">
-            <h2 class="section-title">수 킬로미터에 걸친 실제 도시 기반 비디오 생성</h2>
+            <h2 class="section-title">수 킬로미터에 걸친 도시 탐험</h2>
             <p>
                 실제 도시에 기반하여, SWM은 오차 누적 없이 <strong>수 킬로미터</strong>에 이르는 경로의
                 영상을 안정적으로 생성합니다.
@@ -188,7 +206,7 @@
     <!-- Demo: Free Navigation -->
     <section id="demo-navigation" class="section">
         <div class="container">
-            <h2 class="section-title">게임처럼 자유로운 이동 경로 지원</h2>
+            <h2 class="section-title">게임처럼 자유로운 탐색</h2>
             <p>
                 인도를 걸어가거나, 골목을 돌아보거나, 고속도로를 달리거나.
                 SWM은 단순한 전진 주행을 넘어 <strong>자유로운 카메라 경로</strong>를 지원하여,
@@ -196,23 +214,6 @@
             </p>
             <div class="video-container">
                 <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-3.mp4">
-                </video>
-                <span class="video-caption">SWM이 생성한 AI 영상</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo: Text Control -->
-    <section id="demo-text" class="section">
-        <div class="container">
-            <h2 class="section-title">텍스트 기반 시나리오 제어</h2>
-            <p>
-                SWM은 <strong>텍스트 프롬프트</strong>를 통해 익숙한 도시 풍경을 자유롭게 변형할 수 있습니다.
-                거리를 덮치는 거대한 파도, 빌딩 사이에 나타난 고질라 등
-                어떤 시나리오든 상상하는 대로 만들어 보세요.
-            </p>
-            <div class="video-container">
-                <video loop muted playsinline preload="none" class="lazy-video" data-src="video/page-teaser-4.mp4">
                 </video>
                 <span class="video-caption">SWM이 생성한 AI 영상</span>
             </div>
