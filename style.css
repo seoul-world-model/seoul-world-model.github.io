@@ -468,6 +468,24 @@ p {
     border-radius: 0.5rem;
 }
 
+/* Lazy video loading shimmer */
+video.lazy-video {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(110deg, #e2e8f0 30%, #f1f5f9 50%, #e2e8f0 70%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+video.lazy-video.loaded {
+    background: none;
+    animation: none;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 .figure-caption {
     display: block;
     text-align: center;

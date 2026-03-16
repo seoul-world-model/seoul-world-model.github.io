@@ -129,7 +129,7 @@
                 <a href="video.html" class="btn btn-outline" target="_blank" rel="noopener">
                     <i class="fa-solid fa-video"></i> Full Video
                 </a>
-                <a href="https://github.com/seoul-world-model/SWM" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/naver-ai/seoul-world-model" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-github"></i> Code & Weights
                 </a>
             </div>
@@ -287,6 +287,21 @@
                 (arbitrary collision-free paths). This diversity enables SWM to handle arbitrary camera
                 movements at inference.
             </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_1.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_2.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_3.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+            </div>
+            <span class="video-caption" style="margin-bottom: 2rem;">Examples of synthetic training data</span>
             <p>
                 Synthetic data with diverse camera paths allows SWM to generalize beyond forward-driving trajectories,
                 as shown in the comparison below.
@@ -400,6 +415,9 @@
                 map data and metadata. Finally, we thank Jonghak Kim, Jieun Shin, and Hyeeun Shin for valuable
                 discussions and thoughtful feedback. Their support and collaboration are greatly appreciated.
             </p>
+            <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <a href="https://hits.sh/seoul-world-model.github.io/"><img alt="Hits" src="https://hits.sh/seoul-world-model.github.io.svg?view=today-total&style=for-the-badge&color=97ca00"/></a>
+            </div>
         </div>
     </section>
 
@@ -489,6 +507,10 @@
                         const video = entry.target;
                         const src = video.dataset.src;
                         if (src) {
+                            video.addEventListener('playing', function onPlaying() {
+                                video.classList.add('loaded');
+                                video.removeEventListener('playing', onPlaying);
+                            });
                             const source = document.createElement('source');
                             source.src = src;
                             source.type = 'video/mp4';

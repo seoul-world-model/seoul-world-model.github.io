@@ -18,13 +18,13 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seoul-world-model.github.io/kor.html">
-    <meta property="og:title" content="실제 도시 기반의 월드 시뮬레이션 모델">
+    <meta property="og:title" content="Seoul World Model - 서울 월드 모델">
     <meta property="og:description"
-        content="Seoul World Model (SWM): 서울이라는 실제 도시에 기반한 도시 규모의 월드 모델.">
+        content="월드 모델이 상상 속 공간이 아닌, 우리의 실제 도시를 모델링할 수 있다면 어떨까요? 서울 월드 모델은 실제 도시를 자유롭게 탐색할 수 있는 최초의 비디오 월드 모델입니다.">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title"
-        content="실제 도시 기반의 월드 시뮬레이션 모델">
+        content="Seoul World Model - 서울 월드 모델">
 
     <link rel="icon" type="image/x-icon" href="assets/logo.ico">
 
@@ -127,10 +127,10 @@
                 <a href="SWM_paper.pdf" class="btn" target="_blank" rel="noopener">
                     <i class="fa-solid fa-file-pdf"></i> 논문
                 </a>
-                <a href="video.html" class="btn btn-outline" target="_blank" rel="noopener">
+                <a href="video_kor.html" class="btn btn-outline" target="_blank" rel="noopener">
                     <i class="fa-solid fa-video"></i> 데모 영상
                 </a>
-                <a href="https://github.com/seoul-world-model/SWM" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/naver-ai/seoul-world-model" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-github"></i> 코드
                 </a>
                 <a href="index.html" class="btn btn-outline">
@@ -248,7 +248,7 @@
             </div>
 
             <!-- Cross-Temporal Pairing + View Interpolation -->
-            <h3 class="subsection-title">Cross-Temporal Pairing &amp; 거리뷰 보간</h3>
+            <h3 class="subsection-title">Cross-Temporal Pairing &amp; Street-View Interpolation</h3>
             <p>
                 <strong>Cross-temporal pairing</strong>은 참조 거리뷰 이미지가 타겟과 반드시 다른 시점에
                 촬영된 것이어야 한다는 조건입니다. 이를 통해 모델이 차량 같은 일시적 객체를 무시하고,
@@ -290,6 +290,21 @@
                 <strong>자유 카메라</strong>(충돌 회피 기반 임의 경로).
                 이러한 다양성 덕분에 SWM은 추론 시 자유로운 카메라 이동에도 대응할 수 있습니다.
             </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_1.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_2.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+                <div style="flex: 1;">
+                    <video loop muted playsinline preload="none" class="lazy-video" data-src="video/synthetic_3.mp4" style="width: 100%; border-radius: 0.5rem;">
+                    </video>
+                </div>
+            </div>
+            <span class="video-caption" style="margin-bottom: 1rem;">Examples of synthetic training data</span>
             <p>
                 아래 비교에서 볼 수 있듯이, 다양한 카메라 경로의 합성 데이터가
                 SWM이 전진 주행을 넘어 다양한 경로로 일반화할 수 있도록 합니다.
@@ -399,13 +414,15 @@
         <div class="container">
             <h2 style="font-size: 1.1rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 0.75rem;">감사의 글</h2>
             <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
-                이 연구에 시간과 전문성, 피드백을 아끼지 않으신 NAVER와 NAVER Cloud의 모든 분들께
-                진심으로 감사드립니다. 데이터 전처리에 도움을 주신 임진배, 임문빈, 이바도 님,
-                데이터 처리와 지도 데이터 및 메타데이터 활용에 관해 안내해 주신
-                나종채, 조현준, 황호철, 채명석, 김광건 님,
-                그리고 유익한 논의와 세심한 피드백을 주신 김종학, 신지은, 신혜은 님께 감사드립니다.
-                여러분의 지원과 협력에 깊이 감사합니다.
+                본 연구를 위해 여러 도움을 주신 NAVER와 NAVER Cloud의 모든 분들께 진심으로 감사드립니다.
+                데이터 전처리에 기여해 주신 임진배, 임문빈, 이바도 님께 감사드리며,
+                데이터 처리와 지도 데이터 및 메타데이터 활용에 도움을 주신 나종채, 조현준, 황호철, 채명석, 김광근 님,
+                그리고 기획과 관련해 세심한 피드백을 주신 김종학, 신지은, 신혜은 님께 감사의 말씀을 전합니다.
+                모든 분들의 적극적인 협조와 지원에 깊이 감사드립니다.
             </p>
+            <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <a href="https://hits.sh/seoul-world-model.github.io/"><img alt="Hits" src="https://hits.sh/seoul-world-model.github.io.svg?view=today-total&style=for-the-badge&color=97ca00"/></a>
+            </div>
         </div>
     </section>
 
@@ -495,6 +512,10 @@
                         const video = entry.target;
                         const src = video.dataset.src;
                         if (src) {
+                            video.addEventListener('playing', function onPlaying() {
+                                video.classList.add('loaded');
+                                video.removeEventListener('playing', onPlaying);
+                            });
                             const source = document.createElement('source');
                             source.src = src;
                             source.type = 'video/mp4';
