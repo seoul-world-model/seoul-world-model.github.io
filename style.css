@@ -470,7 +470,7 @@ p {
 
 /* Lazy video loading shimmer */
 video.lazy-video {
-    aspect-ratio: 16 / 9;
+    min-height: 120px;
     background: linear-gradient(110deg, #e2e8f0 30%, #f1f5f9 50%, #e2e8f0 70%);
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
