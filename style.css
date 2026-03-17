@@ -314,10 +314,20 @@ p {
 }
 
 .hero-authors span {
-    color: #334155;
-    /* Slate 700 */
+    color: #2450b5;
     font-weight: 500;
     white-space: nowrap;
+}
+
+.hero-authors a {
+    color: #2450b5;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.hero-authors a:hover {
+    color: #2563eb;
+    text-decoration: underline;
 }
 
 .hero-affiliations {
