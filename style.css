@@ -682,6 +682,26 @@ video.lazy-video.loaded {
     transform: none;
 }
 
+.tweet-gallery {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tweet-gallery > blockquote,
+.tweet-gallery > .twitter-tweet-rendered {
+    flex: 0 0 350px;
+    scroll-snap-align: start;
+    min-width: 0;
+    max-height: 385px;
+    overflow-y: hidden;
+    margin: 0 !important;
+}
+
 @media (max-width: 768px) {
     p {
         font-size: 1rem;
@@ -689,5 +709,9 @@ video.lazy-video.loaded {
 
     :root {
         --caption-font-size: 0.875rem;
+    }
+
+    .tweet-gallery > blockquote {
+        flex: 0 0 300px;
     }
 }

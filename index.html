@@ -76,6 +76,10 @@
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">RAG Visualization</span>
         </a>
+        <a href="#community" class="sidebar-item">
+            <div class="sidebar-dot"></div>
+            <span class="sidebar-label">Community</span>
+        </a>
         <a href="#data-overview" class="sidebar-item">
             <div class="sidebar-dot"></div>
             <span class="sidebar-label">Data</span>
@@ -243,6 +247,34 @@
                 </video>
                 <span class="video-caption">AI-Generated Video by SWM</span>
             </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="section">
+        <div class="container">
+            <h2 class="section-title">Community Highlights</h2>
+            <p>
+                We are grateful that our work has received attention from the research and developer communities.
+                Here are some highlights shared across the community.
+            </p>
+            <div class="tweet-gallery">
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/jyseo_cv/status/2033739972264792430">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/deedydas/status/2039377223179022578">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/tkipf/status/2033914302940516768">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/HuggingPapers/status/2033765628234912150">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/yxy2168/status/2034472974380892463">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/mark_k/status/2033927709730980336">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/lucas_flatwhite/status/2033901858612445627">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/xxunhuang/status/2033939470316143046">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/Scobleizer/status/2034055568655368466">View tweet</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-dnt="true"><a href="https://twitter.com/bilawalsidhu/status/2033954619181654114">View tweet</a></blockquote>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://x.com/search?q=seoul%20world%20model&src=typed_query" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 500;">
+                    See more on X &rarr;
+                </a>
+            </p>
         </div>
     </section>
 
@@ -577,6 +609,9 @@
                 });
             }
         });
+    </script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"
+        onload="twttr.ready(function(){ twttr.events.bind('loaded', function(){ document.querySelector('.tweet-gallery').scrollLeft = 0; }); });">
     </script>
 </body>
 
