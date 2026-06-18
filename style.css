@@ -300,6 +300,16 @@ p {
     }
 }
 
+.hero-venue {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #334155;
+    margin-top: -1.5rem;
+    margin-bottom: 1.25rem;
+}
+
 .hero-authors {
     display: flex;
     flex-wrap: wrap;
