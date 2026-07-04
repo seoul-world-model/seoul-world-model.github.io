@@ -301,13 +301,30 @@ p {
 }
 
 .hero-venue {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     color: #334155;
     margin-top: -1.5rem;
     margin-bottom: 1.25rem;
+}
+
+.hero-venue-sub {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+}
+
+.hero-venue-note {
+    font-size: 0.78rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-text-light);
 }
 
 .hero-authors {
